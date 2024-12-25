@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flexLayout</title>
+    <!-- <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .container2{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+            background-color: aqua;
+            width:400px;
+            height:50px;
+        }
+        .container3{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: purple;
+            width:800px;
+            height:50px;
+        }
+        .container{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            margin-top:20px;
+        }
+    </style> -->
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        .container{
+            width: 1200px;
+            margin: 0 auto;
+            display: flex;
+        }
+        .container2{
+            background-color: red;
+            flex-grow: 1;
+        }
+        .container3{
+            background-color: blue;
+            flex-grow: 2;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="container2">
+            <h1>hello world1</h1>
+        </div>
+        <div class="container3">
+            <h1>hello world2</h1>
+        </div>
+    </div>
+</body>
+</html>
+

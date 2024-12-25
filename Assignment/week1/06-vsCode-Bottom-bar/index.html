@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vs code bottm bar</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+        }
+        .container {
+            background-color: black;
+            width: 1200px;
+            margin: 0 auto;
+            color: white;
+        }
+
+        .languagePanel {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding-inline: 2.5rem
+        }
+
+        .languagePanel img {
+            height: 40px;
+            width: auto;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            column-gap: 2rem;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .verticalCenter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .left p{
+            padding-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="bodychange">
+
+    
+    <div class="container">
+        <div class="left">
+            <h1>Code in any Language</h1>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea nobis dolores vel, quibusdam libero sint vero maiores labore aperiam ut!</p>
+        </div>    
+        <div class="languagePanel">
+            <div class="flex">
+                <img src="https://code.visualstudio.com/assets/home/language-js.png" alt="Javascript">
+                <code class="verticalCenter">JavaScript</code>
+            </div>
+            <div class="flex">
+                <img src="https://code.visualstudio.com/assets/home/language-ts.png" alt="TypeScript">
+                <code class="verticalCenter">TypeScript</code>
+            </div>
+            <div class="flex">
+                <img src="https://code.visualstudio.com/assets/home/language-python.png" alt="Python">
+                <code class="verticalCenter">Python</code>
+            </div>
+            <div class="flex">
+                <img src="https://code.visualstudio.com/assets/home/language-cs.png" alt="C#">
+                <code class="verticalCenter">C#</code>
+            </div>
+            <div class="flex">
+                <img src="https://code.visualstudio.com/assets/home/language-cpp.png" alt="C++">
+                <code class="verticalCenter">C++</code>
+            </div>
+            <div class="flex">
+                <img src="https://code.visualstudio.com/assets/home/language-html.png" alt="HTML">
+                <code class="verticalCenter">HTML</code>
+            </div>
+            <div class="flex">
+                <img src="https://code.visualstudio.com/assets/home/language-java.png" alt="Java">
+                <code class="verticalCenter">Java</code>
+            </div>
+            <div class="flex"> 
+                <img src="https://code.visualstudio.com/assets/home/language-json.png" alt="JSON">
+                <code class="verticalCenter">JSON</code>
+            </div>
+            <div class="flex">
+                <img src="https://code.visualstudio.com/assets/home/language-php.png" alt="PHP">
+                <code class="verticalCenter">PHP</code>
+            </div>
+            <div class="flex">
+                <img src="https://code.visualstudio.com/assets/home/language-markdown.png" alt="Markdown">
+                <code class="verticalCenter">Markdown</code>
+            </div>
+            <div class="flex">
+                <img src="https://code.visualstudio.com/assets/home/language-powershell.png" alt="Powershell">
+                <code class="verticalCenter">Powershell</code>
+            </div>
+            <div class="flex">
+                <img src="https://code.visualstudio.com/assets/home/language-yaml.png" alt="YAML">
+                <code class="verticalCenter">YAML</code>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

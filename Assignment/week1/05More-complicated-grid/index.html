@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complicated Grid</title>
+    <style>
+
+        .container{
+            width:1200px;
+            margin:0 auto;
+            display:grid;
+            grid-template-columns: 1fr 2fr;
+            gap:10px;
+
+        }
+
+
+        .left {
+            display: flex; /* Enables Flexbox */
+            flex-direction: column; /* Stacks items vertically */
+            justify-content: center; /* Centers content vertically */
+            align-items: center; /* Centers content horizontally */
+            background-color: red;
+            color: white; /* For better visibility */
+            padding: 20px; /* Adds spacing inside the container */
+        }
+        .right{
+            display:grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            background-color: blue;
+            
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <h1>left</h1>
+
+           <h3> text text text text text text text text text texxt text </h3>
+        </div>
+        <div class="right">
+            <h3>Col 1</h3>
+            <h3>Col 1</h3>
+            <h3>Col 1</h3>
+            <h3>Col 1</h3>
+            <h3>Col 1</h3>
+            <h3>Col 1</h3>
+            <h3>Col 1</h3>
+            <h3>Col 1</h3>
+            <h3>Col 1</h3>
+            <h3>Col 1</h3>
+            <h3>Col 1</h3>
+            <h3>Col 1</h3>
+        </div>
+    </div>
+</body>
+</html>
