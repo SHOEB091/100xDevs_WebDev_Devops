@@ -14,6 +14,8 @@ let promise = new Promise(function(resolve, reject){
 });
 */
 
+//jab bhi resolve call hota hai toh jo bhi .then hai woh execute hoga 
+
 let promise = new Promise((resolve,reject)=>{
     setTimeout(()=>{
         if(true){

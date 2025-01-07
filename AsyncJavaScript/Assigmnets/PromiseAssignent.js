@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const filePath = path.join(__dirname, 'a.txt');
+const filePath = path.join(__dirname, '../a.txt');
 
 // Promisified version of setTimeout
 function setTimeoutPromisified(ms) {
