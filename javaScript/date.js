@@ -1,11 +1,55 @@
-let now = new Date();
+function dateMethods() {
+    const currentDate = new Date();
+    console.log("Current Date:", currentDate);
+  
+    // Getting various components of the date
+    console.log("Date:", currentDate.getDate());
+    console.log("Month:", currentDate.getMonth() + 1); // Months are zero-indexed, so adding 1
+    console.log("Year:", currentDate.getFullYear());
+    console.log("Hours:", currentDate.getHours());
+    console.log("Minutes:", currentDate.getMinutes());
+    console.log("Seconds:", currentDate.getSeconds());
+  
+    // Setting components of the date
+    currentDate.setFullYear(2022);
+    console.log("After setFullYear:", currentDate);
+  
+    currentDate.setMonth(5); // Setting month to June (zero-indexed)
+    console.log("After setMonth:", currentDate);
+  
+    // Getting and setting time in milliseconds since 1970
+    console.log("Time in milliseconds since 1970:", currentDate.getTime());
+  
+    const newDate = new Date(2023, 8, 15); // Creating a new date
+    console.log("New Date:", newDate);
+  }
+  
+  // Example Usage for Date Methods
+  dateMethods();function dateMethods() {
+  const currentDate = new Date();
+  console.log("Current Date:", currentDate);
 
-console.log("Year:", now.getFullYear()); // Output: Year: 2023
-console.log("Month:", now.getMonth()); // Output: Month: 9 (0-based, 9 = October)
-console.log("Date:", now.getDate()); // Output: Date: 10
-console.log("Day:", now.getDay()); // Output: Day: 2 (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
-console.log("Hours:", now.getHours()); // Output: Hours: 10
-console.log("Minutes:", now.getMinutes()); // Output: Minutes: 0
-console.log("Seconds:", now.getSeconds()); // Output: Seconds: 0
-console.log("Milliseconds:", now.getMilliseconds()); // Output: Milliseconds: 0
-console.log("Time (milliseconds since Jan 1, 1970):", now.getTime()); // Output: Time: 1696932000000
+  // Getting various components of the date
+  console.log("Date:", currentDate.getDate());
+  console.log("Month:", currentDate.getMonth() + 1); // Months are zero-indexed, so adding 1
+  console.log("Year:", currentDate.getFullYear());
+  console.log("Hours:", currentDate.getHours());
+  console.log("Minutes:", currentDate.getMinutes());
+  console.log("Seconds:", currentDate.getSeconds());
+
+  // Setting components of the date
+  currentDate.setFullYear(2022);
+  console.log("After setFullYear:", currentDate);
+
+  currentDate.setMonth(5); // Setting month to June (zero-indexed)
+  console.log("After setMonth:", currentDate);
+
+  // Getting and setting time in milliseconds since 1970
+  console.log("Time in milliseconds since 1970:", currentDate.getTime());
+
+  const newDate = new Date(2023, 8, 15); // Creating a new date
+  console.log("New Date:", newDate);
+}
+
+// Example Usage for Date Methods
+dateMethods();
