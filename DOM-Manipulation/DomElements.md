@@ -16,5 +16,11 @@ There are 5 popular methods available for fetching DOM elements:
   ```javascript
   const element = document.querySelector('.class-name');
 
+### querrySelectorAll
+
+### getElementById
+
+### getElementByClassName 
+
 
   

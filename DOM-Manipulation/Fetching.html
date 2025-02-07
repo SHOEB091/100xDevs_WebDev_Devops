@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width">
+	  <title>replit</title>
+	  <link href="style.css" rel="stylesheet" type="text/css" />
+	</head>
+	
+	<body>
+	  <h1 id ="todo1" >Todo list</h1>
+	  <h4 id ="todo2" > 1. Take class</h4>
+	  <h4 id ="todo3" > 2. Go out to eat</h4>
+	  <div>
+	    <input type="text" placeholder="write your todo here"></input>
+	    <button id ="btn" onclick="addTodo()">Add Todo</button>
+	  </div>
+	  
+      <script>
+        function addTodo(){
+            const inputElement = document.querySelector("input");
+            const value = inputElement.value;
+            console.log(value);
+        }
+
+      </script>
+	</body>	
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
