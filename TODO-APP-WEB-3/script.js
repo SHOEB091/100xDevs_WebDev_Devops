@@ -10,14 +10,37 @@ function callback(){
 setInterval(callback, 2000);
 */
 
-//adding todo 
+// Counter for todo items
+let ctr = 1;
 
-function addTodo(){
+// Function to delete a todo item
+function deleteTodo(index) {
+    const element = document.getElementById(index);
+    if (element) {
+        element.parentNode.removeChild(element);
+    }
+}
+
+// Function to add a new todo item
+function addTodo() {
     const inputEl = document.querySelector("input");
-    const value = inputEl.value;
+    const value = inputEl.value.trim();
+
+    if (value === '') {
+        alert('Please enter a todo');
+        return;
+    }
 
     const newDivEl = document.createElement("div");
-    newDivEl.innerHTML = value;
+    newDivEl.setAttribute("id", "todo-" + ctr);
+
+    newDivEl.innerHTML = "<div>" + value + '</div> <button onclick="deleteTodo(\'todo-' + ctr + '\')">Delete</button>';
 
     document.querySelector("body").appendChild(newDivEl);
+
+    ctr++;
+    inputEl.value = '';
 }
+
+// Example usage
+document.getElementById('add-todo-button').onclick = addTodo;
