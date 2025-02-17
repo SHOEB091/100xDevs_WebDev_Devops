@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Pokemon Cards</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>The Pokemon Finder</h1>
+    </header>
+     
+     <section class="form-container">
+        <label for="numPokemon">Number of Pokemon:</label>
+        <input type="number" id="numPokemon" min="1" max="50" placeholder="Enter number (1-50)">
+
+        <label for="pokemonCategory">Select Category:</label>
+        <select id="pokemonCategory">
+            <option value="all">All</option>
+            <option value="fire">Fire</option>
+            <option value="water">Water</option>
+            <option value="grass">Grass</option>
+            <option value="electric">Electric</option>
+            <option value="psychic">Psychic</option>
+            <option value="rock">Rock</option>
+            <option value="ground">Ground</option>
+            <option value="ice">Ice</option>
+            <option value="dragon">Dragon</option>
+            <option value="ghost">Ghost</option>
+            <option value="fairy">Fairy</option>
+        </select>
+
+        <button id="fetchPokemon">Fetch Pokemon</button>
+
+    </section>
+     
+    <!-- Pokémon Display Section -->
+    <section class="pokemon-container" id="pokemonContainer">
+        <!-- Pokémon Cards will be displayed here dynamically -->
+    </section>
+    
+<script src="script.js"></script>
+</body>
+</html>
