@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complex Dom </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <input type="text"></input> 
+    <button onclick="addTodo()">Add Todo</button>
+
+
+    <script>
+        function addTodo() {
+            const value = document.querySelector("input").value.trim();
+
+            if (value === '') {
+                alert('Please enter a todo');
+                return;
+            }
+
+            // Create span element for the todo text
+            const spanEl = document.createElement("span");
+            spanEl.innerHTML = value;
+
+            // Create button element for deleting the todo
+            const buttonEl = document.createElement("button");
+            buttonEl.innerHTML = "Delete";
+            buttonEl.onclick = function() {
+                divEl.remove();
+            };
+
+            // Create div element to hold the span and button
+            const divEl = document.createElement("div");
+            divEl.appendChild(spanEl);
+            divEl.appendChild(buttonEl);
+
+            // Append the new div to the body
+            document.querySelector("body").appendChild(divEl);
+
+            // Clear the input field
+            document.querySelector("input").value = '';
+        }
+    </script>
+
+</body>
+</html>
