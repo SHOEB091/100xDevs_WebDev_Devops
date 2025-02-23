@@ -20,3 +20,51 @@ element.addEventListener(event, function(){}, useCapture);
 // event → The type of event (e.g., "click", "mouseover", "keydown")
 // function → The function that runs when the event occurs
 // useCapture (optional) → Boolean (default false for bubbling, true for capturing)
+
+
+
+
+{/* <button id="myButton">Click Me</button> */}
+//1 Click Event Listener
+document.getElementById("myButton").addEventListener("click", function () {
+    alert("Button was clicked!");
+});
+
+
+
+//2 Mouseiver Event 
+{/* <div id="hoverBox" style="width: 200px; height: 100px; background-color: lightblue;">Hover over me</div> */}
+
+
+document.getElementById("hoverBox").addEventListener("mouseover", function () {
+    this.style.backgroundColor = "yellow"; // Changes background on hover
+});
+
+
+
+{/* <input type="text" id="textInput" placeholder="Type something..." /> */}
+
+//3 Keypress Event 
+
+document.getElementById("textInput").addEventListener("keydown", function (event) {
+    console.log("Key pressed: " + event.key);
+});
+
+
+
+//4 Remove Event Listener 
+// <button id="toggleButton">Click to Disable</button>
+
+function showMessage() {
+    alert("Button clicked!");
+}
+
+const button = document.getElementById("toggleButton");
+button.addEventListener("click", showMessage);
+
+// Remove event listener after 3 seconds
+setTimeout(() => {
+    button.removeEventListener("click", showMessage);
+    alert("Event Listener Removed!");
+}, 3000);
+
