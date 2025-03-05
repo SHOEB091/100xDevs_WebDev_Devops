@@ -8,12 +8,26 @@ const FILE_PATH = 'todo.json';
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// First store the data in the todos array
-let todos = [];
+// Read todos from the file
+function readTodosFromFile() {
+  if (fs.existsSync(FILE_PATH)) {
+    const data = fs.readFileSync(FILE_PATH, 'utf8');
+    return JSON.parse(data);
+  } else {
+    // Create the file with an empty array if it does not exist
+    fs.writeFileSync(FILE_PATH, JSON.stringify([]));
+    return [];
+  }
+}
 
-// Generate a unique ID for each todo
+// Write todos to the file
+function writeTodosToFile(todos) {
+  fs.writeFileSync(FILE_PATH, JSON.stringify(todos, null, 2));
+}
+
+// Generate a unique ID for each todo using Math.random
 function generateId() {
-  return todos.length > 0 ? todos[todos.length - 1].id + 1 : 1;
+  return Math.floor(Math.random() * 1000000);
 }
 
 app.post('/', function (req, res) {
@@ -23,18 +37,21 @@ app.post('/', function (req, res) {
     return res.status(400).json({ error: 'Title is required' });
   }
 
+  const todos = readTodosFromFile();
   const newTodo = {
     title,
     id: generateId(),
   };
 
   todos.push(newTodo);
+  writeTodosToFile(todos);
   res.status(201).json(newTodo);
 });
 
 app.delete('/:id', function (req, res) {
   // Extract the todo id
   const { id } = req.params;
+  const todos = readTodosFromFile();
   const todoIndex = todos.findIndex(todo => todo.id === parseInt(id));
 
   if (todoIndex === -1) {
@@ -42,6 +59,7 @@ app.delete('/:id', function (req, res) {
   }
 
   todos.splice(todoIndex, 1);
+  writeTodosToFile(todos);
   res.status(204).send();
 });
 
@@ -54,6 +72,7 @@ app.put('/:id', function (req, res) {
     return res.status(400).json({ error: 'Title is required' });
   }
 
+  const todos = readTodosFromFile();
   const todo = todos.find(todo => todo.id === parseInt(id));
 
   if (!todo) {
@@ -61,10 +80,12 @@ app.put('/:id', function (req, res) {
   }
 
   todo.title = title;
+  writeTodosToFile(todos);
   res.json(todo);
 });
 
 app.get('/', function (req, res) {
+  const todos = readTodosFromFile();
   res.json({ todos });
 });
 
