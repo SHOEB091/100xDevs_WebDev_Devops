@@ -1,0 +1,13 @@
+Middleware functions are functions that have access to the request object ,
+response object and the next middleware  function in the application request response cycle 
+
+Middleware function can perform following task 
+
+execute any code 
+Make changes to the request and response object 
+End the request response cycle 
+call the next middleware function in the stack 
+
+
+
+
