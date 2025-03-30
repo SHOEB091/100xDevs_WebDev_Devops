@@ -20,6 +20,8 @@ app.use(requestCounter);
 
 // Handler function to calculate the sum of two query parameters
 function realSumHandler(req, res) {
+
+    //querry parameters https:localhost:3000/sum?a=5&b=10
     const a = parseInt(req.query.a);
     const b = parseInt(req.query.b);
 
