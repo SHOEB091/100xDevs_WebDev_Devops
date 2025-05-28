@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Signup</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div>
+        Signup
+        <input type="text" id="signup-username" placeholder="Username">
+        <input type="password" id="signup-password" placeholder="Password">
+        <button onclick="signup()">Submit</button>
+    </div>
+
+    <div>
+        Signin
+        <input type="text" id="signin-username" placeholder="Username">
+        <input type="password" id="signin-password" placeholder="Password">
+        <button onclick="signin()">Submit</button>
+    </div>
+
+    <div>
+    User information: 
+    <div id="information"></div>
+    </div>
+
+    <div>
+    <button onclick="logout()">Logout</button>
+    </div>
+</body>
+
+</html>
