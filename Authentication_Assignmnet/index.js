@@ -5,6 +5,9 @@ const jwt = require('jsonwebtoken');
 // Define a JWT secret key for token signing and verification
 const JWT_SECRET = "your-secret-key"; // In production, use environment variables
 
+
+
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
