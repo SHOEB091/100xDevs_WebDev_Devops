@@ -5,18 +5,24 @@ const app = express();
 const auth = require('./middleware/auth');
 
 // Import handlers
-const { signup, login, getProfile } = require('./handlers/userHandlers');
+const { signup, signin, getProfile } = require('./handlers/userhandler');
+
+// Import path module at the top of the file
+const path = require('path');
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Basic route
+// Basic route - serves index.html
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Auth routes
 app.post("/api/signup", signup);
-app.post("/api/login", login);
+app.post("/api/signin", signin);
 
 // Protected route using auth middleware
 app.get("/api/profile", auth, getProfile);

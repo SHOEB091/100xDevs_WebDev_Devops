@@ -14,26 +14,26 @@ function signup(req,res){
         return res.status(400).json({message: "Please provide username and password"});
     }
 
-    //Check if user already esists 
-    const existingUser = username.find(user => user.username===username);
+    //Check if user already exists 
+    const existingUser = users.find(user => user.username === username);
     if(existingUser){
-        return res.status(400).json({message:"user already Exists"});
+        return res.status(400).json({message:"User already exists"});
     }
 
     //Create new User
-    const newuser ={
+    const newUser = {
         id: users.length + 1,
         username,
-        password, // In real word, you wold hash this  
+        password, // In real world, you would hash this  
     };
     //Save user to "database"
     users.push(newUser);
 
     //Generate JWT token
-    const token = jwt.sign({is: newUser.id, username: newUser.username},JWT_SECRET,{expiresIn:'1h'});
+    const token = jwt.sign({id: newUser.id, username: newUser.username}, JWT_SECRET, {expiresIn:'1h'});
 
     //Return success with token 
-    res.ststus(201).json({
+    res.status(201).json({
         message: "User created successfully",
         token
     });
@@ -41,7 +41,7 @@ function signup(req,res){
 }
 
 //Login handler 
-function login(req,res){
+function signin(req,res){
     const {username,password} = req.body;
 
     // Basic validation
@@ -84,6 +84,6 @@ function getProfile(req, res) {
 }
 module.exports = {
     signup,
-    login,
+    signin,
     getProfile
 };
