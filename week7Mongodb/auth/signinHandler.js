@@ -5,16 +5,16 @@ const Users = require('../models/users');
 const bcrypt = require('bcryptjs');
 
 async function signin(req, res) {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
     try {
         // Basic validation
-        if (!username || !password) {
-            return res.status(400).json({ message: "Please provide username and password" });
+        if (!email || !password) {
+            return res.status(400).json({ message: "Please provide email and password" });
         }
 
         // Check if user exists
-        const user = await Users.findOne({ username });
+        const user = await Users.findOne({ email });
         if (!user) {
             return res.status(400).json({ message: "Invalid credentials" });
         }
@@ -26,7 +26,7 @@ async function signin(req, res) {
         }
 
         // Generate JWT token
-        const token = jwt.sign({ id: user._id, username: user.username }, JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, { expiresIn: '1h' });
 
         // Return success with token
         res.status(200).json({

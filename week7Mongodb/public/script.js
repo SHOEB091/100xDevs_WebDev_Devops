@@ -30,3 +30,84 @@ document.querySelector("#todo-list").addEventListener("click", function(event) {
 
 // Add the addTodo function when the Add Todo button is clicked
 document.querySelector(".add-todo").addEventListener("click", addTodo);
+
+// Handle signup form submission
+document.getElementById('signup-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const username = this.username.value;
+    const email = this.email.value;
+    const password = this.password.value;
+
+    try {
+        const response = await fetch('/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, email, password })
+        });
+        const data = await response.json();
+        if (response.ok) {
+            alert('Signup successful! Token: ' + data.token);
+        } else {
+            alert('Signup failed: ' + data.message);
+        }
+    } catch (error) {
+        console.error('Error during signup:', error);
+        alert('An error occurred during signup.');
+    }
+});
+
+// Handle signin form submission
+document.getElementById('signin-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const email = this.email.value;
+    const password = this.password.value;
+
+    try {
+        const response = await fetch('/signin', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+        const data = await response.json();
+        if (response.ok) {
+            alert('Signin successful! Token: ' + data.token);
+        } else {
+            alert('Signin failed: ' + data.message);
+        }
+    } catch (error) {
+        console.error('Error during signin:', error);
+        alert('An error occurred during signin.');
+    }
+});     
+
+/* With Axious  */
+/*
+    document.getElementById('signup-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const username = this.username.value;
+    const email = this.email.value;
+    const password = this.password.value;
+
+    try {
+        const res = await axios.post('/register', { username, email, password });
+        alert('Signup successful! Token: ' + res.data.token);
+    } catch (error) {
+        alert('Signup failed: ' + (error.response?.data?.message || error.message));
+    }
+});
+
+
+document.getElementById('signin-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const email = this.email.value;
+    const password = this.password.value;
+
+    try {
+        const res = await axios.post('/signin', { email, password });
+        alert('Signin successful! Token: ' + res.data.token);
+    } catch (error) {
+        alert('Signin failed: ' + (error.response?.data?.message || error.message));
+    }
+});
+*/
+
