@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+    <form id="add-form">
+        <input type="text" name="todo" placeholder="Enter a new todo" required>
+        <button class="add-todo" type="button">Add Todo</button> <!-- Changed to type="button" -->
+    </form>
+    <ul id="todo-list">
+        <!-- Todo items will be dynamically added here as <li> elements -->
+    </ul>
+    <!-- Removed the separate delete form since deletion is handled by buttons in todo items -->
+
+    <script src="script.js"></script>
+</body>
+</html>
