@@ -33,6 +33,7 @@ async function signin(req, res) {
             message: "Signin successful",
             token
         });
+        console.log(token);
 
     } catch (err) {
         console.error('Signin error:', err);

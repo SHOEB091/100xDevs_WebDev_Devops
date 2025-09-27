@@ -7,18 +7,18 @@ const cors = require('cors');
 const signup = require('./auth/signupHandler');
 const signin = require('./auth/signinHandler');
 
-const todoRoutes = require('./routes/todo');
+const todoRoutes = require('./routes/todos');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 
 
-app.use('/api/todos', todoRoutes);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/api/todos', todoRoutes);
 
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/todos', {
