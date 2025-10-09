@@ -5,3 +5,6 @@ node_modules
 * node_modules
 ./node_modeules
 /node_modeules
+.env
+*.env
+/.env
