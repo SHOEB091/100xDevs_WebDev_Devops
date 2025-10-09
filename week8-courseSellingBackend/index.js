@@ -12,10 +12,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-mongoose.connect(process.env.Mongoose || 'mongodb://127.0.0.1:27017/course-selling')
-.then(()=>{
-    console.log('mongodb connected')
-});
+// ...existing code...
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/course-selling')
+  .then(() => {
+    console.log('mongodb connected');
+  })
+  .catch(err => {
+    console.error('mongodb connection error:', err.message);
+  });
+// ...existing code...
 
 
 app.get('/',(req,res)=>{
