@@ -7,6 +7,8 @@ const cors = require('cors');
 const port = process.env.PORT || 3000;
 
 const authRoutes = require('./routes/auth')
+const userRouter = require('./routes/user');
+const courseRouter = require('./routes/Courses');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -28,6 +30,10 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/auth',authRoutes);
+
+app.user('/user',userRouter);
+
+app.use('/course',courseRouter)
 
 
 app.listen(port,()=>{
