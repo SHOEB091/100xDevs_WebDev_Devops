@@ -9,6 +9,7 @@ const port = process.env.PORT || 3000;
 const authRoutes = require('./routes/auth')
 const userRouter = require('./routes/user');
 const courseRouter = require('./routes/Courses');
+const adminRouter = require('./routes/admin')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -31,9 +32,11 @@ app.get('/',(req,res)=>{
 
 app.use('/auth',authRoutes);
 
-app.user('/user',userRouter);
+app.use('/user',userRouter);
 
-app.use('/course',courseRouter)
+app.use('/courses',courseRouter)
+
+app.use('/admin',adminRouter)
 
 
 app.listen(port,()=>{
