@@ -1,7 +1,7 @@
 const express = require('express');
 const adminRouter = express.Router();
 
-
+const {userSignup , userSignin} = require('../controllers/authController')
 
 adminRouter.post('/signup',userSignup);
 adminRouter.post('/signin',userSignin);
