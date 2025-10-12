@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const port = process.env.PORT || 3000;
 
-const authRoutes = require('./routes/auth')
+//const authRoutes = require('./routes/auth')
 const userRouter = require('./routes/user');
 const courseRouter = require('./routes/Courses');
 const adminRouter = require('./routes/admin')
@@ -30,7 +30,7 @@ app.get('/',(req,res)=>{
     res.status(200).send("Server is up and running");
 })
 
-app.use('/auth',authRoutes);
+//app.use('/auth',authRoutes);
 
 app.use('/user',userRouter);
 

@@ -1,9 +1,9 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const User = require("../models/userModel");
+const User = require("../models/adminModel");
 const mongoose = require('mongoose');
 
-const userSignup = async function (req, res) {
+const adminSignup = async function (req, res) {
   try {
     const { name, email, password } = req.body;
 
@@ -25,7 +25,7 @@ const userSignup = async function (req, res) {
       password: hashedPassword,
     });
 
-    if (!process.env.JWT_SECRET) {
+    if (!process.env.JWT_SECRET_ADMIN) {
       return res.status(500).json({ message: "JWT secret not configured" });
     }
 
@@ -52,7 +52,7 @@ const userSignup = async function (req, res) {
 };
 
 // ...existing code...
-const userSignin = async function (req, res) {
+const adminSignin = async function (req, res) {
   try {
     const { email, password } = req.body; // fix: use 'password', not 'passowrd'
     if (!email || !password) {
@@ -69,7 +69,7 @@ const userSignin = async function (req, res) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    if (!process.env.JWT_SECRET) {
+    if (!process.env.JWT_SECRET_ADMIN) {
       return res.status(500).json({ message: "JWT secret not configured" });
     }
 
@@ -90,5 +90,5 @@ const userSignin = async function (req, res) {
   }
 };
 // ...existing code...
-module.exports = { userSignup, userSignin };
+module.exports = { adminSignup, adminSignin };
 
