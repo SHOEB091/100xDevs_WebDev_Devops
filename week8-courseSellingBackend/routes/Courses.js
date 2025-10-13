@@ -1,23 +1,33 @@
 const express = require('express');
-
+const Purchase = require('../models/purchases')
+const Course = require('../models/course')
 const courseRouter = express.Router();
+const {userMiddleware} = require('../middleware/user')
 
 
-
-courseRouter.post('/purchase',(req,res)=>{
+courseRouter.post('/purchase',userMiddleware,async(req,res)=>{
     // in real world yo would accept use to pay money to buy the course 
-    res.status(200).json({message:"purchased Course"})
+    const userId = req.userId;
+    const courseId = req.body.courseId;
+
+    //should check that the user has actually paid the price
+    await Purchase.create({
+        userId,
+        courseId
+    })
+
+    res.status(200).json({message:"You have purchased the course Successfully"})
 })
 
 
-//to get all the current courses which show on websites
-courseRouter.get('/course',(req,res)=>{
-    res.status(200).json({essage:"Get Course endpoints"});
-})
 
 
-courseRouter.get('/preview',(req,res)=>{
-    res.status(200).json({essage:"Course Preview endpoints"});
+
+courseRouter.get('/preview',async(req,res)=>{
+
+    const courses = await Course.find({});
+
+    res.status(200).send(courses);
 })
 
 

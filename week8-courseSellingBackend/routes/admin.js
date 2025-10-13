@@ -9,12 +9,12 @@ const {adminSignup , adminSignin} = require('../controllers/adminAuthController'
 adminRouter.post('/signup',adminSignup);
 adminRouter.post('/signin',adminSignin);
 
-adminRouter.post('/course',adminMiddleware,async (req,res)=>{
+adminRouter.post('/courses',adminMiddleware,async (req,res)=>{
     const adminId = req.userId;
 
     const{title, description, imageUrl, price}= req.body;
 
-    const course = await courseModel.create({
+    const course = await Course.create({
         title, 
         description, 
         imageUrl, 
@@ -32,7 +32,7 @@ adminRouter.post('/course',adminMiddleware,async (req,res)=>{
 
 
 //Get all Courses
-adminRouter.get('/course',adminMiddleware,async(req,res)=>{
+adminRouter.get('/courses',adminMiddleware,async(req,res)=>{
     try {
         const courses = await Course.find();
         res.status(200).json(courses);
@@ -44,7 +44,7 @@ adminRouter.get('/course',adminMiddleware,async(req,res)=>{
 
 
 //Get a Particular Course detail
-adminRouter.get('/course/:id',adminMiddleware,async(req,res)=>{
+adminRouter.get('/courses/:id',adminMiddleware,async(req,res)=>{
     try{
         const course = await Course.findById(req.params.id);
         if(!course) return res.status(404).json({message:"Course not found"})
@@ -94,7 +94,7 @@ adminRouter.get('/course/:id',adminMiddleware,async(req,res)=>{
 // });
 
 //Update the Course 
-adminRouter.put('/course/:id', adminMiddleware, async (req, res) => {
+adminRouter.put('/courses/:id', adminMiddleware, async (req, res) => {
     const id = req.params.id;
     const { title, description, price, imageUrl } = req.body;
 
@@ -117,7 +117,7 @@ adminRouter.put('/course/:id', adminMiddleware, async (req, res) => {
 
 //Delete Course 
 
-adminRouter.delete('/course/:id', adminMiddleware, async (req, res) => {
+adminRouter.delete('/courses/:id', adminMiddleware, async (req, res) => {
     const id = req.params.id;
     try {
         const deletedCourse = await Course.findByIdAndDelete(id);

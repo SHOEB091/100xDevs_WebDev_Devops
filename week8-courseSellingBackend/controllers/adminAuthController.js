@@ -1,49 +1,33 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const User = require("../models/adminModel");
+const Admin = require("../models/adminModel"); // <-- Rename for clarity
 const mongoose = require('mongoose');
+const Course = require('../models/course');
 
 const adminSignup = async function (req, res) {
   try {
     const { name, email, password } = req.body;
-
     if (!name || !email || !password) {
       return res.status(400).json({ message: "All fields are required" });
     }
-
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ message: "User already exists" });
+    const existingAdmin = await Admin.findOne({ email });
+    if (existingAdmin) {
+      return res.status(400).json({ message: "Admin already exists" });
     }
-
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    //create data in databse
-    const newUser = await User.create({
-      name,
-      email,
-      password: hashedPassword,
-    });
-
+    const newAdmin = await Admin.create({ name, email, password: hashedPassword });
     if (!process.env.JWT_SECRET_ADMIN) {
       return res.status(500).json({ message: "JWT secret not configured" });
     }
-
     const token = jwt.sign(
-      { id: newUser._id, email: newUser.email},
-      process.env.JWT_SECRET,
+      { id: newAdmin._id, email: newAdmin.email },
+      process.env.JWT_SECRET_ADMIN,
       { expiresIn: "1h" }
     );
-
-    // Optionally omit password before sending
     return res.status(201).json({
-      message: "User registered successfully",
+      message: "Admin registered successfully",
       token,
-      user: {
-        id: newUser._id,
-        name: newUser.name,
-        email: newUser.email,
-      }
+      user: { id: newAdmin._id, name: newAdmin.name, email: newAdmin.email }
     });
   } catch (err) {
     console.error("Signup error:", err);
@@ -51,44 +35,37 @@ const adminSignup = async function (req, res) {
   }
 };
 
-// ...existing code...
 const adminSignin = async function (req, res) {
   try {
-    const { email, password } = req.body; // fix: use 'password', not 'passowrd'
+    const { email, password } = req.body;
     if (!email || !password) {
       return res.status(400).json({ message: "Email and password required" });
     }
-
-    const user = await User.findOne({ email });
-    if (!user) {
+    const admin = await Admin.findOne({ email });
+    if (!admin) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
-
-    const match = await bcrypt.compare(password, user.password);
+    const match = await bcrypt.compare(password, admin.password);
     if (!match) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
-
     if (!process.env.JWT_SECRET_ADMIN) {
       return res.status(500).json({ message: "JWT secret not configured" });
     }
-
     const token = jwt.sign(
-      { id: user._id, email: user.email},
-      process.env.JWT_SECRET,
+      { id: admin._id, email: admin.email },
+      process.env.JWT_SECRET_ADMIN,
       { expiresIn: "1h" }
     );
-
     return res.status(200).json({
       message: "Signin successful",
       token,
-      user: { id: user._id, name: user.name, email: user.email}
+      user: { id: admin._id, name: admin.name, email: admin.email }
     });
   } catch (err) {
     console.error("Signin error:", err);
     return res.status(500).json({ message: "Server error" });
   }
 };
-// ...existing code...
-module.exports = { adminSignup, adminSignin };
 
+module.exports = { adminSignup, adminSignin };
