@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <h1>Hello React!</h1>
+      <Counter></Counter>
+    </div>
   )
 }
+
+
+
+function Counter(){
+  //useState is a Hook that lets you add state to functional components. It returns an array with the current state and a function to update it.
+  const [count,setCount]= useState(0);
+
+  // function increaseCount(){
+  //   count = 0;
+  //   document.getElementById("counter").innerText = ++count;
+  // }
+  function increaseCount(){
+    setCount(count+1);
+  }
+  function decreaseCount(){
+    setCount(count-1);
+  }
+  function resetCount(){
+    setCount(0);
+  }
+
+  return <div>
+    <h1 id="counter">{count}</h1>
+    <button className="increment-button" onClick={increaseCount}>Increment count</button>
+    <button className="decrement-button" onClick={decreaseCount}>Decrement count</button>
+    <button className="reset-button" onClick={resetCount}>Reset count</button>
+  </div>
+
+}
+
 
 export default App
