@@ -1,19 +1,34 @@
-import React from 'react'
-import { useState ,useEffect} from 'react'
-const StatesHooks = () => {
-    const [count,setCount]= useState(0);
+import React, { useState, useEffect } from 'react';
 
-    function increaseCount(){
-      setCount(count+1);
-    }
+const StatesHooks = () => {
+  // mounting a timer that increments count every second
+  const [count, setCount] = useState(0);
+
+  console.log("counter");
+
+  useEffect(function() {
+    setInterval(function(){
+        setCount(function(count){
+            return count + 1;
+        })
+    },1000);
+    console.log("mounted");
+     // cleanup on unmount
+  }, []);
+
+  // optional handlers
+  // const increaseCount = () => setCount(c => c + 1);
+  // const decreaseCount = () => setCount(c => c - 1);
+  // const resetCount = () => setCount(0);
+
   return (
     <div>
-       <h1 id="counter">{count}</h1>
-    <button className="increment-button" onClick={increaseCount}>Increment count</button>
-    <button className="decrement-button" onClick={decreaseCount}>Decrement count</button>
-    <button className="reset-button" onClick={resetCount}>Reset count</button>
+      <h2 id="counter">{count}</h2>
+      {/* <button onClick={increaseCount}>Increment</button>
+      <button onClick={decreaseCount}>Decrement</button>
+      <button onClick={resetCount}>Reset</button> */}
     </div>
-  )
-}
+  );
+};
 
-export default StatesHooks
+export default StatesHooks;
